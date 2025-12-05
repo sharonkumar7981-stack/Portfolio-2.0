@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My Portfolio</title>
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
+  <meta name="description" content="Personal portfolio showcasing projects, skills and contact." />
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0f1724;        /* deep background */
+      --card:#0b1220;
+      --muted:#94a3b8;
+      --accent:#7c3aed;     /* violet */
+      --glass: rgba(255,255,255,0.04);
+      --radius:16px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background: linear-gradient(180deg,var(--bg), #081022 60%);
+      color:#e6eef8;
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
+      padding:32px;
+    }
+
+    /* Container */
+    .container{max-width:1100px;margin:0 auto}
+
+    /* Top nav */
+    header{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:48px;height:48px;background:linear-gradient(135deg,var(--accent),#4f46e5);border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:700;color:white}
+    .site-name{font-weight:700}
+
+    nav{display:flex;gap:18px;align-items:center}
+    a.btn{padding:8px 14px;border-radius:10px;text-decoration:none;color:var(--muted);font-weight:600}
+    a.btn.primary{background:linear-gradient(90deg,var(--accent),#4f46e5);color:white;box-shadow:0 6px 18px rgba(124,58,237,0.18)}
+    a.btn:hover{opacity:0.95}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 380px;gap:28px;align-items:center;margin-bottom:30px}
+    .hero-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:28px;border-radius:var(--radius);box-shadow: 0 6px 30px rgba(2,6,23,0.6);backdrop-filter: blur(6px)}
+    h1{font-size:34px;margin:0 0 8px}
+    .subtitle{color:var(--muted);margin:0 0 18px}
+    .cta-row{display:flex;gap:12px}
+
+    /* Profile box */
+    .profile-card{background:var(--card);padding:18px;border-radius:var(--radius);display:flex;flex-direction:column;align-items:center;gap:14px}
+    .avatar{width:180px;height:180px;border-radius:18px;background:linear-gradient(135deg,#0ea5a4,#06b6d4);display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:700;color:white}
+    .meta{color:var(--muted);text-align:center}
+
+    /* Sections */
+    section{margin-bottom:26px}
+    h2{font-size:20px;margin:0 0 14px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .card{background:var(--glass);padding:16px;border-radius:14px}
+    .project-title{font-weight:700;margin:0 0 6px}
+    .project-desc{color:var(--muted);font-size:13px;margin:0}
+
+    /* Skills */
+    .skills{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    .skill{display:flex;flex-direction:column;gap:8px}
+    .bar{height:10px;background:rgba(255,255,255,0.06);border-radius:8px;overflow:hidden}
+    .bar > span{display:block;height:100%;background:linear-gradient(90deg,var(--accent),#06b6d4);border-radius:8px}
+
+    /* Contact form */
+    form{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    input,textarea{width:100%;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
+    textarea{grid-column:1 / -1;min-height:120px}
+    button.send{grid-column:1 / -1;padding:12px;border-radius:10px;border:0;background:linear-gradient(90deg,var(--accent),#4f46e5);font-weight:700;color:white}
+
+    footer{color:var(--muted);text-align:center;padding:18px 0;margin-top:18px}
+
+    /* Responsive */
+    @media (max-width:920px){
+      .hero{grid-template-columns:1fr}
+      .grid-3{grid-template-columns:repeat(2,1fr)}
+      .skills{grid-template-columns:1fr}
+      form{grid-template-columns:1fr}
+    }
+    @media (max-width:520px){
+      body{padding:18px}
+      .grid-3{grid-template-columns:1fr}
+      header{flex-direction:column;gap:12px;align-items:flex-start}
+      .logo{width:44px;height:44px}
+    }
+
+    $1
+
+    /* Hover effects added */
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 22px rgba(0,0,0,0.25);
+      transition: 0.25s ease;
+    }
+
+    a.btn:hover {
+      transform: translateY(-2px);
+      transition: 0.2s ease;
+      opacity: 1;
+    }
+
+    .project-title:hover {
+      color: var(--accent);
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .profile-card:hover {
+      transform: translateY(-4px);
+      transition: 0.25s ease;
+      box-shadow: 0 8px 22px rgba(0,0,0,0.3);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">YN</div>
+        <div>
+          <div class="site-name">Sharon</div>
+          <div class="muted" style="font-size:13px">Ethical hacker • Developer • Problem solver</div>
+        </div>
+      </div>
+
+      <nav>
+        <a class="btn" href="#about">About</a>
+        <a class="btn" href="#projects">Projects</a>
+        <a class="btn" href="#contact">Contact</a>
+        <a class="btn primary" href="#">Resume</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-card">
+          <h1>Hi — I'm <span style="color:var(--accent)">Sharon kumar</span></h1>
+          <p class="subtitle">I build clean, modern websites and web apps. My focus on Cyber security too.</p>
+
+          <div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:18px">
+            <a class="btn primary" href="#projects">See my work</a>
+            <a class="btn" href="#contact">Hire me</a>
+            <span class="tag">Currently Studing</span>
+          </div>
+
+          <div style="display:flex;gap:18px;align-items:center">
+            <div>
+              <div style="font-weight:800;font-size:28px">1+</div>
+              <div class="muted" style="font-size:13px">Years experience</div>
+            </div>
+            <div>
+              <div style="font-weight:800;font-size:28px">5+</div>
+              <div class="muted" style="font-size:13px">Projects completed</div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="profile-card">
+          <div class="avatar">YN</div>
+          <div style="text-align:center">
+            <div style="font-weight:800">Sharon kumar</div>
+            <div class="muted">🔹 Web developer <br>🔹 Ethical Hacker</div>
+          </div>
+          <div class="meta">I love turning ideas into beautiful, fast, and accessible interfaces.</div>
+          <div style="display:flex;gap:10px;width:100%;justify-content:center">
+            <a class="btn" href="#projects">Projects</a>
+            <a class="btn" href="#contact">Contact</a>
+          </div>
+        </aside>
+      </section>
+
+      <section id="about">
+        <h2>About</h2>
+        <div class="hero-card">
+          <p class="muted">I’m a Cybersecurity Engineer and Web Developer who loves building secure, modern, and visually appealing digital experiences. I specialize in protecting systems from threats, performing ethical hacking, and creating responsive websites with clean code and strong functionality. With a passion for both security and design, I focus on crafting experiences that are fast, safe, and user-friendly while constantly exploring new technologies to stay ahead in the digital world.</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px">
+            <div>
+              <strong style="color:crimson">Location</strong>
+              <div class="muted">Gujarat, India</div>
+            </div>
+            <div>
+              <strong style="color:crimson">Available</strong>
+              <div class="muted">Open to work / Freelance</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects">
+        <h2>Projects</h2>
+        <div class="grid-3">
+          <article class="card">
+            <div class="project-title">Project One</div>
+            <p class="project-desc">A short one-line explanation of the project and key tech used (React, Node, CSS).</p>
+            <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
+              <span class="tag">React</span>
+              <span class="tag">API</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="project-title">Project Two</div>
+            <p class="project-desc">Another short description — what problem it solves and the outcome.</p>
+            <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="project-title">Project Three</div>
+            <p class="project-desc">A concise blurb showing polish: performance, accessibility, or design wins.</p>
+            <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
+              <span class="tag">JavaScript</span>
+              <span class="tag">UX</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <h2>Skills</h2>
+        <div class="skills">
+          <div class="skill">
+            <div style="display:flex;justify-content:space-between"><strong>HTML &amp; CSS</strong><span class="muted">90%</span></div>
+            <div class="bar"><span style="width:90%"></span></div>
+          </div>
+
+          <div class="skill">
+            <div style="display:flex;justify-content:space-between"><strong>JavaScript</strong><span class="muted">5%</span></div>
+            <div class="bar"><span style="width:5%"></span></div>
+          </div>
+
+          <div class="skill">
+            <div style="display:flex;justify-content:space-between"><strong>kali linux</strong><span class="muted">30%</span></div>
+            <div class="bar"><span style="width:30%"></span></div>
+          </div>
+
+          <div class="skill">
+            <div style="display:flex;justify-content:space-between"><strong>Git hub</strong><span class="muted">20%</span></div>
+            <div class="bar"><span style="width:20%"></span></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <h2>Contact</h2>
+        <div class="card" style="padding:18px">
+          <form action="mailto:your.email@example.com" method="post" enctype="text/plain">
+            <input type="text" name="name" placeholder="Your name" required>
+            <input type="email" name="email" placeholder="Your email" required>
+            <textarea name="message" placeholder="Message"></textarea>
+            <button type="submit" class="send">Send message</button>
+          </form>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      © <span id="year"></span> Sharon kumar — Built with ❤️ • <span class="muted">Made for learning and quick showcase</span>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
